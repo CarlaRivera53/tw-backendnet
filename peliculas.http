@@ -1,0 +1,31 @@
+GET https://localhost:7169/api/peliculas 
+
+###
+
+GET https://localhost:7169/api/peliculas/2
+
+###
+
+POST https://localhost:7169/api/peliculas/2
+Content-Type: application/json
+{
+    "titulo": "pelicula de prueba",
+    "sinopsis": "sinopsis de prueba",
+    "anio": 2024,
+    "categorias": [2,3]
+}
+###
+
+PUT  https/localhost:7169/api/peliculas
+Content-Type: application/json
+{
+    "pelicula":16,
+    "titulo": "paw patrol: la super pelicula",
+    "Sinopsis": " un meteorito aterriza en adventure city y otorga super poderes a los cachorros de paw patrol",
+    "anio": "2024",
+    "poster": "https://tse4.mm.bing.net/th?id=OIP.BslSDptIcI-4onC65d62ogAAAA&pid=Api&P=0&h=180",
+    "categoria": [1,2,3]
+}  
+
+###
+DELETE  https://localhost:7169/api/peliculas/16 
