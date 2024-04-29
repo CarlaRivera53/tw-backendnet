@@ -1,12 +1,13 @@
 using backendnet.Data.Seed;
 using backendnet.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 namespace backendnet.Data;
 
-public class DataContext : DbContext
+public class IdentityContext : DbContext
 {
-  public DataContext(DbContextOptions<DataContext> options) : base(options)
+  public IdentityContext(DbContextOptions<IdentityContext> options) : base(options)
   {
 
   }  
@@ -18,6 +19,9 @@ public class DataContext : DbContext
     {
         modelBuilder.ApplyConfiguration(new SeedCategoria());
         modelBuilder.ApplyConfiguration( new SeedPelicula());
+        modelBuilder.SeedUserIdentityData();
+
+        base.OnModelCreating(modelBuilder);
     }
 
 }

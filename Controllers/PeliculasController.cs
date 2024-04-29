@@ -1,6 +1,7 @@
 using System.Data.Common;
 using backendnet.Data;
 using backendnet.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,9 +11,9 @@ namespace backendnet.Controllers;
 [ApiController]
 public class PeliculasController : Controller
 {
-    private readonly DataContext _context;
+    private readonly IdentityContext _context;
 
-    public PeliculasController(DataContext context)
+    public PeliculasController(IdentityContext context)
     {
         _context = context;
     }
@@ -25,6 +26,7 @@ public class PeliculasController : Controller
     }
     //get: api/peliculas/5
     [HttpGet("{id}")]
+    [Authorize(Roles = "Usuaio,Administrador")]
     public async Task<ActionResult<Pelicula>> GetPelicula(int id)
     {
         var pelicula = await _context.Pelicula.Include(i => i.Categorias).AsNoTracking().FirstOrDefaultAsync(s => s.PeliculaId ==id);
@@ -36,7 +38,8 @@ public class PeliculasController : Controller
     }
     //post: api/peliculas
     [HttpPost]
-    public async Task<ActionResult<Pelicula>> PostPelicula(PeliculaDTO peliculaDTO)
+    [Authorize(Roles = "Administrador")]
+        public async Task<ActionResult<Pelicula>> PostPelicula(PeliculaDTO peliculaDTO)
     {
 
         Pelicula pelicula = new()

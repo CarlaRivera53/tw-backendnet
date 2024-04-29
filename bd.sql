@@ -1,3 +1,3 @@
-ROP DATABASE IF EXISTS netflix;
-CREATE DATABASE netflix CHARACTER SET utf8mb4;
-USE netflix;
+DROP DATABASE IF EXISTS netflixnet;
+CREATE DATABASE netflixnet CHARACTER SET utf8mb4;
+USE netflixnet;

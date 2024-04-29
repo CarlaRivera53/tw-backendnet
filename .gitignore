@@ -5,6 +5,10 @@
 
 # dotenv files
 .env
+#REST Client 
+restclient
+#SQL scripts
+*.sql
 
 # User-specific files
 *.rsuser

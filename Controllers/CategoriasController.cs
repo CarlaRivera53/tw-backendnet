@@ -1,16 +1,18 @@
 using System.Data.Common;
 using backendnet.Data;
 using backendnet.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 namespace backendnet.Controllers;
 [Route("api/[controller]")]
 [ApiController]
+[Authorize(Roles = "Administrador")]
 public class CategoriasController : Controller
 {
-  private readonly DataContext _context;
-  public CategoriasController(DataContext context)
+  private readonly IdentityContext _context;
+  public CategoriasController(IdentityContext context)
   {
     _context = context;
    
